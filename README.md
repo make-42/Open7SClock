@@ -16,6 +16,8 @@ Print parts:
  - 1x Container
  - 1x Lid
  - 4x Spacers
+ 
+ <img width=50% src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/CAD/Photos/printing_lid.webp"></img>
 
 ### Step 2
 Screw Raspberry Pi Zero in place in the container.
