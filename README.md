@@ -9,3 +9,22 @@ In France you can make this for ≈23€ if you have a 3D printer:
  - ≈ 1€ PLA Plastic Filament
  - < 1€ 4x M2.5x8 Screw and Nuts
  - < 1€ 12x M2x16 Screw and Nuts
+
+## Build
+### Step 1
+Print parts:
+ - 1x Container
+ - 1x Lid
+ - 4x Spacers
+
+### Step 2
+Screw Raspberry Pi Zero in place in the container.
+
+### Step 3
+Connect the seven segment displays following this diagram:
+
+### Step 4
+Install software.
+
+### Step 5
+Done!
