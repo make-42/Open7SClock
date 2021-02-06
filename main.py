@@ -26,6 +26,7 @@ while 1:
     if now.minute != oldminute:
         update(now.year, now.day, now.month, now.hour, now.minute)
         oldminute = now.minute
+	time.sleep(0.5)
 
 
 
