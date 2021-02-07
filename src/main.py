@@ -18,10 +18,10 @@ def update(year, day, month, hour, minute):
 
 #Update bitcoin price
 def updatebtc(price, currency):
-    pricestring = str(price)[:8]
+    pricestring = str(price)[:8].replace('.', '-')
     tm_year.write([0b01111100, 0b01111000, 0b01011000, 0b00000000])
-    tm_date.show(((8-len(pricestring))*" ")+pricestring[:-3])
-    tm_time.show(pricestring[-3:]+currency)
+    tm_date.show(pricestring[:4])
+    tm_time.show(pricestring[5:3]+currency)
     print("btc",pricestring+currency)
 
 # Sample text
