@@ -23,17 +23,22 @@ def printodisplays(stringtoprint):
     tm_e.print(stringtoprint[16:20])
 
 # Define functions
-def update(datetimeobject):
+# Update time
+def updatetime(datetimeobject):
     datetimeobjectstr = datetimeobject.strftime("%Y-%m-%d  %H:%M:%S") # ISO 8601 Standard
     printodisplays(datetimeobjectstr)
+
+#Update bitcoin price
+def updatebtc(price, currency):
+    pricestring = str(price)
+    printodisplays("Bitcoin: "+pricestring+currency)
 
 # Sample text
 printodisplays("[Open7SClock, xE0F9]")
 time.sleep(1)
 
-oldminute = 60
 
 while 1:
     now = datetime.datetime.now()
-    update(now)
+    updatetime(now)
     time.sleep(0.2)
