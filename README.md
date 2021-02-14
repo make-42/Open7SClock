@@ -17,12 +17,12 @@ Print parts:
  - 1x Lid
  - 12x Spacers
 
-<img width=50% src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/7 segment/CAD/Photos/printing_lid.webp"></img>
+<img width=50% src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/Nitrogen/CAD/Photos/printing_lid.webp"></img>
 
 ### Step 2
 Screw Raspberry Pi Zero in place in the container.
 
-<img width=50% src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/7 segment/CAD/Photos/raspberrypi_installed.jpg"></img>
+<img width=50% src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/Nitrogen/CAD/Photos/raspberrypi_installed.jpg"></img>
 ### Step 3
 Connect the seven segment displays following this diagram:
 
