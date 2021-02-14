@@ -15,15 +15,15 @@ i2c = busio.I2C(board.SCL, board.SDA)
 print("Done.")
 # Initialise displays.
 print("Initialising displays: ", end="")
-print("1 ", end=""))
+print("1 ", end="")
 tm_a = segments.Seg14x4(i2c, address=addresses[0]) # Address 0
-print("2 ", end=""))
+print("2 ", end="")
 tm_b = segments.Seg14x4(i2c, address=addresses[1]) # Address 1
-print("3 ", end=""))
+print("3 ", end="")
 tm_c = segments.Seg14x4(i2c, address=addresses[2]) # Address 2
-print("4 ", end=""))
+print("4 ", end="")
 tm_d = segments.Seg14x4(i2c, address=addresses[3]) # Address 3
-print("5 ", end=""))
+print("5 ", end="")
 tm_e = segments.Seg14x4(i2c, address=addresses[4]) # Address 4
 print("Done.")
 
