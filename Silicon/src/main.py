@@ -55,7 +55,7 @@ time.sleep(1)
 oldseconds = 99
 # Start main program loop
 while 1:
-    now = datetime.datetime.now()
+	now = datetime.datetime.now()
 	if now.seconds != oldseconds:
 		updatetime(now)
 		oldseconds = now.seconds
