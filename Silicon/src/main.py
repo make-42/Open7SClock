@@ -44,7 +44,7 @@ def updatebtc(price, currency):
     pricestring = str(price)
     printodisplays("Bitcoin: "+pricestring+currency)
 
-# Display loading text. 
+# Display loading text.
 print("Displaying startup text...")
 printodisplays("[Open7SClock, xE0F9]")
 time.sleep(1)
@@ -55,8 +55,8 @@ time.sleep(1)
 oldseconds = 99
 # Start main program loop
 while 1:
-	now = datetime.datetime.now()
-	if now.seconds != oldseconds:
-		updatetime(now)
-		oldseconds = now.seconds
+    now = datetime.datetime.now()
+    if now.seconds != oldseconds:
+        updatetime(now)
+        oldseconds = now.seconds
     time.sleep(0.2)
