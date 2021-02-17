@@ -36,6 +36,6 @@ while 1:
     now = datetime.datetime.now()
     update(now.year, now.day, now.month, now.hour, now.minute)
     print(now.year, now.day, now.month, now.hour, now.minute)
-    time.sleep(5)
+    time.sleep(0.5)
     # Bitcoin price
-    updatebtc(web.bitcoin.geteuroprice(),"E")
+    #updatebtc(web.bitcoin.geteuroprice(),"E")
