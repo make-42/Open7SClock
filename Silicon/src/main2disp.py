@@ -42,7 +42,7 @@ def ping():
     time.sleep(1)
     if pcstate:
         printodisplays("Online ")
-    else pcstate:
+    else:
         printodisplays("Offline")
     time.sleep(1)
 
