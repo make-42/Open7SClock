@@ -64,7 +64,7 @@ oldseconds = 99
 statecounter = 0
 # Start main program loop
 while 1:
-    if statecounter == 200:
+    if statecounter == 2000:
         statecounter = 0
         ping()
     else:
