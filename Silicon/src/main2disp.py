@@ -8,7 +8,7 @@ import math
 # User variables
 version = "1.01"
 addresses = [0x71,0x72]
-
+ip = "192.168.1.56"
 # Initialise program.
 # Create the I2C interface.
 print("Starting I²C interface... ", end="")
@@ -35,6 +35,17 @@ def updatetime(datetimeobject, seperation):
     else:
         datetimeobjectstr = datetimeobject.strftime("%H %M %S") # ISO 8601 Standard
     printodisplays(datetimeobjectstr)
+# Define "ping" function.
+def ping():
+    pcstate = os.system(f"ping -c 1 -w2 {ip} > /dev/null 2>&1") == 0
+    printodisplays("PC is  ")
+    time.sleep(1)
+    if pcstate:
+        printodisplays("Online ")
+    else pcstate:
+        printodisplays("Offline")
+    time.sleep(1)
+
 # Define "update bitcoin price" function.
 def updatebtc(price, currency):
     pricestring = str(price)
@@ -49,9 +60,15 @@ time.sleep(1)
 
 
 oldseconds = 99
+statecounter = 0
 # Start main program loop
 while 1:
-    now = datetime.datetime.now()
-    sep = math.floor(time.time()*2)%2
-    updatetime(now,sep)
+    if statecounter == 200:
+        statecounter = 0
+        ping()
+    else:
+        now = datetime.datetime.now()
+        sep = math.floor(time.time()*2)%2
+        updatetime(now,sep)
     time.sleep(0.05)
+    statecounter = statecounter+1
