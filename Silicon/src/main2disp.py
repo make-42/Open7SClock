@@ -4,6 +4,7 @@ import board
 import busio
 import time
 import math
+import os
 
 # User variables
 version = "1.01"
