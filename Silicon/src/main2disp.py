@@ -64,7 +64,7 @@ oldseconds = 99
 statecounter = 0
 # Start main program loop
 while 1:
-    if statecounter == 2000:
+    if statecounter == 200:
         statecounter = 0
         ping()
     else:
@@ -72,4 +72,4 @@ while 1:
         sep = math.floor(time.time()*2)%2
         updatetime(now,sep)
     time.sleep(0.05)
-    statecounter = statecounter+1
+    #statecounter = statecounter+1
