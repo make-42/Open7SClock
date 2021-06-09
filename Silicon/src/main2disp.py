@@ -9,7 +9,7 @@ import os
 import json
 
 # User variables
-version = "1.02"
+version = "1.01"
 addresses = [0x71,0x72]
 ip = "192.168.1.56"
 # Initialise program.
@@ -48,9 +48,11 @@ def itime():
 
 # Define "split text between displays" function.
 def printodisplays(stringtoprint):
-    tm_a.print(stringtoprint[:4])
-    tm_b.print(stringtoprint[4:8])
-
+    try:
+        tm_a.print(stringtoprint[:4])
+        tm_b.print(stringtoprint[4:8])
+    except:
+        printodisplays(stringtoprint)
 # Define "update time" function.
 def updatetime(datetimeobject, seperation):
     if seperation:
