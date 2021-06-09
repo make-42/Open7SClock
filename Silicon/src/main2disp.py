@@ -1,13 +1,15 @@
 from adafruit_ht16k33 import segments
 import datetime
+from time import localtime, timezone, time
 import board
 import busio
 import time
 import math
 import os
+import json
 
 # User variables
-version = "1.01"
+version = "1.02"
 addresses = [0x71,0x72]
 ip = "192.168.1.56"
 # Initialise program.
@@ -24,6 +26,26 @@ tm_b = segments.Seg14x4(i2c, address=addresses[1]) # Address 1
 print("Done.")
 
 # Define functions.
+
+# Define "internet time" function.
+
+def itime():
+    """Calculate and return Swatch Internet Time
+
+    :returns: No. of beats (Swatch Internet Time)
+    :rtype: float
+    """
+    currtime = time.time()
+    h, m, s = localtime()[3:6]
+    beats = ((h * 3600) + (m * 60) + s + (currtime-math.floor(currtime)) + timezone) / 86.4
+
+    if beats > 1000:
+        beats -= 1000
+    elif beats < 0:
+        beats += 1000
+
+    return beats
+
 # Define "split text between displays" function.
 def printodisplays(stringtoprint):
     tm_a.print(stringtoprint[:4])
@@ -64,12 +86,13 @@ oldseconds = 99
 statecounter = 0
 # Start main program loop
 while 1:
-    if statecounter == 200:
+    if statecounter >= 200:
+        printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
+    if statecounter >= 400:
         statecounter = 0
-        ping()
-    else:
+    if statecounter < 200:
         now = datetime.datetime.now()
         sep = math.floor(time.time()*2)%2
         updatetime(now,sep)
     time.sleep(0.05)
-    #statecounter = statecounter+1
+    statecounter = statecounter+1
