@@ -24,7 +24,7 @@ class StringGenerator(object):
 
 
 if __name__ == '__main__':
-    cherrypy.config.update({'server.socket_host': '127.0.0.1','server.socket_port': 4215,})
+    cherrypy.config.update({'server.socket_host': '0.0.0.0','server.socket_port': 4215,})
     conf = {
         '/': {
             'tools.sessions.on': True
