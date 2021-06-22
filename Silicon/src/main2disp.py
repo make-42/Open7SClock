@@ -8,12 +8,19 @@ import math
 import os
 import json
 import requests
+import subprocess
 
 # User variables
 version = "1.01"
 addresses = [0x72,0x71]
 ip = "192.168.1.56"
+mprisEnabled=True
 # Initialise program.
+# Start mpris webserver.
+if mprisEnabled:
+    print("Starting MPRIS² WebServer ", end="")
+    subprocess.Popen(["python3","mprisserver.py"])
+    print("Done.")
 # Create the I2C interface.
 print("Starting I²C interface... ", end="")
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -93,13 +100,14 @@ while 1:
         if statecounter < 400:
             printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
     if statecounter >= 400:
-        #r = requests.get("http://127.0.0.1:4215/")
-        #rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
-        #mpristext = str(rjson['artist']).replace("\\n","")+" - "+str(rjson['title']).replace("\\n","")
-        #for x in range(len(mpristext)-8):
-        #    printodisplays(mpristext[0+x:8+x])
-        #    time.sleep(0.3)
-        #time.sleep(0.5)
+        if mprisEnabled:
+            r = requests.get("http://127.0.0.1:4215/")
+            rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
+            mpristext = str(rjson['artist']).replace("\\n","")+" - "+str(rjson['title']).replace("\\n","")
+            for x in range(len(mpristext)-8):
+               printodisplays(mpristext[0+x:8+x])
+               time.sleep(0.3)
+            time.sleep(0.5)
         statecounter = 0
     if statecounter < 200:
         now = datetime.datetime.now()
