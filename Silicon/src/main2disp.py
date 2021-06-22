@@ -10,7 +10,7 @@ import json
 
 # User variables
 version = "1.01"
-addresses = [0x71,0x72]
+addresses = [0x72,0x71]
 ip = "192.168.1.56"
 # Initialise program.
 # Create the I2C interface.
