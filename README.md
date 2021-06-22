@@ -31,6 +31,14 @@ Install software.
 
 ### Step 5
 Done!
+<<<<<<< HEAD
     <a href="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/Silicon/CAD/Videos/open7sclockcrf28.mp4" type="video/mp4">
     Link to a video demonstrating built clock.
     </a>
+=======
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/Nitrogen/CAD/Photos/raspberrypi_installed.jpg">
+    <source src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/Silicon/CAD/Videos/open7sclockcrf28.mp4" type="video/mp4">
+  </video>
+</figure>
+>>>>>>> 4b59f2fc8987c53691e637e0ebb4d48bc692948f
