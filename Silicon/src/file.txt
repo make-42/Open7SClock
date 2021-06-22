@@ -1,0 +1,1 @@
+{'status': 'Paused\n', 'volume': '0.469131\n', 'album': 'I like it when you sleep, for you are so beautiful yet so unaware of it: Target Deluxe Edition\n', 'artist': 'The 1975\n', 'title': 'Love Me\n', 'duration': 222.0, 'position': 46.0}
