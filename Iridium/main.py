@@ -7,7 +7,7 @@ import time
 clockip = "http://192.168.1.51:4215/update" #192.168.1.51:4215/post
 
 player = "rhythmbox"#"plasma-browser-integration"
-
+last = ""
 def runcommand(command):
     return subprocess.Popen(command, shell=True, stdout=subprocess.PIPE).stdout.read().decode("utf-8")
 while 1:
@@ -20,5 +20,10 @@ while 1:
     position = float(runcommand("playerctl position -p "+player))
 
     payload = {"status":status,"volume":volume,"album":album,"artist":artist,"title":title,"duration":duration,"position":position}
-    r = requests.post(clockip,json=json.dumps(payload),headers={"Content-Type":"application/json"})
+    try:
+        if artist+title != last:
+            r = requests.post(clockip,json=json.dumps(payload),headers={"Content-Type":"application/json"})
+            last = artist+title
+    except:
+        pass
     time.sleep(2)
