@@ -7,6 +7,7 @@ import time
 import math
 import os
 import json
+import requests
 
 # User variables
 version = "1.01"
@@ -89,8 +90,16 @@ statecounter = 0
 # Start main program loop
 while 1:
     if statecounter >= 200:
-        printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
+        if statecounter < 400:
+            printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
     if statecounter >= 400:
+        #r = requests.get("http://127.0.0.1:4215/")
+        #rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
+        #mpristext = str(rjson['artist']).replace("\\n","")+" - "+str(rjson['title']).replace("\\n","")
+        #for x in range(len(mpristext)-8):
+        #    printodisplays(mpristext[0+x:8+x])
+        #    time.sleep(0.3)
+        #time.sleep(0.5)
         statecounter = 0
     if statecounter < 200:
         now = datetime.datetime.now()
