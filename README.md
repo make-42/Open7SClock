@@ -31,3 +31,9 @@ Install software.
 
 ### Step 5
 Done!
+<video controls width="100%">
+
+    <source src="https://raw.githubusercontent.com/xE0F9/Open7SClock/master/Silicon/CAD/Videos/open7sclockcrf28.mp4" type="video/mp4">
+
+    Sorry, your browser doesn't support embedded videos.
+</video>
