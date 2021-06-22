@@ -16,11 +16,6 @@ addresses = [0x72,0x71]
 ip = "192.168.1.56"
 mprisEnabled=True
 # Initialise program.
-# Start mpris webserver.
-if mprisEnabled:
-    print("Starting MPRIS² WebServer ", end="")
-    subprocess.Popen(["python3","mprisserver.py"])
-    print("Done.")
 # Create the I2C interface.
 print("Starting I²C interface... ", end="")
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -101,7 +96,7 @@ while 1:
             printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
     if statecounter >= 400:
         if mprisEnabled:
-            r = requests.get("http://127.0.0.1:4215/")
+            r = requests.get("http://"+ip+":4215/")
             rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
             mpristext = str(rjson['artist']).replace("\\n","")+" - "+str(rjson['title']).replace("\\n","")
             for x in range(len(mpristext)-8):
