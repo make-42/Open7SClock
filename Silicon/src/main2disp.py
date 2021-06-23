@@ -98,7 +98,7 @@ while 1:
         if mprisEnabled:
             r = requests.get("http://"+ip+":4215/")
             rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
-            mpristext = str(rjson['artist']).replace("\\n","")+" - "+str(rjson['title']).replace("\\n","")
+            mpristext = str(rjson['artist']).replace("\\n","")+"- "+str(rjson['title']).replace("\\n","")
             for x in range(len(mpristext)-8):
                printodisplays(mpristext[0+x:8+x])
                time.sleep(0.3)
