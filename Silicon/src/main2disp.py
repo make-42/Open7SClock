@@ -96,13 +96,16 @@ while 1:
             printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
     if statecounter >= 400:
         if mprisEnabled:
-            r = requests.get("http://"+ip+":4215/")
-            rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
-            mpristext = str(rjson['artist']).replace("\\n","")+"- "+str(rjson['title']).replace("\\n","")
-            for x in range(len(mpristext)-8):
-               printodisplays(mpristext[0+x:8+x])
-               time.sleep(0.3)
-            time.sleep(0.5)
+            try:
+                r = requests.get("http://"+ip+":4215/")
+                rjson = json.loads(json.loads(r.content.decode("utf-8")).replace("\'","\""))
+                mpristext = str(rjson['artist']).replace("\\n","")+"- "+str(rjson['title']).replace("\\n","")
+                for x in range(len(mpristext)-8):
+                   printodisplays(mpristext[0+x:8+x])
+                   time.sleep(0.3)
+                time.sleep(0.5)
+            except:
+                pass
         statecounter = 0
     if statecounter < 200:
         now = datetime.datetime.now()
