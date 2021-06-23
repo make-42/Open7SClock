@@ -105,7 +105,7 @@ while 1:
             except:
                 pass
         statecounter = time.time()
-    if statecounter < 200:
+    if time.time()-statecounter < 10:
         now = datetime.datetime.now()
         sep = math.floor(time.time()*2)%2
         updatetime(now,sep)
