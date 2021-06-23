@@ -86,15 +86,13 @@ time.sleep(1)
 printodisplays("-Silicon")
 time.sleep(1)
 
-
-oldseconds = 99
-statecounter = 0
+statecounter = time.time()
 # Start main program loop
 while 1:
-    if statecounter >= 200:
-        if statecounter < 400:
+    if time.time()-statecounter >= 10:
+        if time.time()-statecounter < 20:
             printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
-    if statecounter >= 400:
+    if time.time()-statecounter >= 20:
         if mprisEnabled:
             try:
                 r = requests.get("http://"+ip+":4215/")
@@ -106,10 +104,9 @@ while 1:
                 time.sleep(0.5)
             except:
                 pass
-        statecounter = 0
+        statecounter = time.time()
     if statecounter < 200:
         now = datetime.datetime.now()
         sep = math.floor(time.time()*2)%2
         updatetime(now,sep)
     time.sleep(0.05)
-    statecounter = statecounter+1
