@@ -1,5 +1,5 @@
 # Open7SClock
-[![Open7SClock](https://raw.githubusercontent.com/C8H10N4O2-E970/Open7SClock/master/Silicon/CAD/Render/Open7sClockLoop.gif)]
+![Open7SClock](https://raw.githubusercontent.com/C8H10N4O2-E970/Open7SClock/master/Silicon/CAD/Render/Open7sClockLoop.gif)
 Open Source 7 Segment Display Clock
 
 A cheap wirelessly controlled 7 segment dislay clock.
