@@ -1,4 +1,5 @@
 # Open7SClock
+[![Open7SClock](https://share.gifyoutube.com/KzB6Gb.gif)]
 Open Source 7 Segment Display Clock
 
 A cheap wirelessly controlled 7 segment dislay clock.
