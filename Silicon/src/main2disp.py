@@ -64,7 +64,7 @@ def printodisplays(stringtoprint):
 # Define "update time" function.
 def updatetime(datetimeobject, seperation):
     if seperation:
-        datetimeobjectstr = datetimeobject.strftime("  %H%M  ") # ISO 8601 Standard
+        datetimeobjectstr = datetimeobject.strftime(" %H  %M ") # ISO 8601 Standard
     else:
         datetimeobjectstr = datetimeobject.strftime("  %H:%M ") # ISO 8601 Standard
     printodisplays(datetimeobjectstr)
