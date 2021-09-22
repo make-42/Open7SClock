@@ -9,12 +9,17 @@ import os
 import json
 import requests
 import subprocess
+import string
+import random
 
 # User variables
 version = "1.01"
 addresses = [0x72,0x71]
-ip = "192.168.1.56"
+ip = "192.168.1.59"
 mprisEnabled=True
+reactivity = 1 # def: 0.05
+# System Variables
+AlphanumList = string.ascii_lowercase + string.ascii_uppercase + string.digits
 # Initialise program.
 # Create the I2C interface.
 print("Starting I²C interface... ", end="")
@@ -59,9 +64,9 @@ def printodisplays(stringtoprint):
 # Define "update time" function.
 def updatetime(datetimeobject, seperation):
     if seperation:
-        datetimeobjectstr = datetimeobject.strftime("%H:%M:%S") # ISO 8601 Standard
+        datetimeobjectstr = datetimeobject.strftime("  %H%M  ") # ISO 8601 Standard
     else:
-        datetimeobjectstr = datetimeobject.strftime("%H %M %S") # ISO 8601 Standard
+        datetimeobjectstr = datetimeobject.strftime("  %H:%M ") # ISO 8601 Standard
     printodisplays(datetimeobjectstr)
 # Define "ping" function.
 def ping():
@@ -79,19 +84,30 @@ def updatebtc(price, currency):
     pricestring = str(price)
     printodisplays("Bitcoin: "+pricestring+currency)
 
+def showtextanim(stringToAnim,stepCount,timeDelay):
+    for y in range(stepCount):
+        outputStringAnim = ""
+        for x in stringToAnim:
+            if random.random() > y/stepCount:
+                outputStringAnim+=random.choice(AlphanumList)
+            else:
+                outputStringAnim+=x
+        printodisplays(outputStringAnim)
+    printodisplays(stringToAnim)
+    time.sleep(timeDelay)
+
+
 # Display loading text.
 print("Displaying startup text...")
-printodisplays("-[xE0F9]")
-time.sleep(1)
-printodisplays("-Silicon")
-time.sleep(1)
+showtextanim("-OnTake-",100,0.5)
+showtextanim("With  <3",100,0.5)
 
 statecounter = time.time()
 # Start main program loop
 while 1:
-    if time.time()-statecounter >= 10:
-        if time.time()-statecounter < 20:
-            printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
+    #if time.time()-statecounter >= 10:
+    #    if time.time()-statecounter < 20:
+    #        printodisplays("@{0:0.3f}".format(itime()).replace(".","-"))
     if time.time()-statecounter >= 20:
         if mprisEnabled:
             try:
@@ -105,8 +121,8 @@ while 1:
             except:
                 pass
         statecounter = time.time()
-    if time.time()-statecounter < 10:
+    if time.time()-statecounter < 20:
         now = datetime.datetime.now()
         sep = math.floor(time.time()*2)%2
-        updatetime(now,sep)
-    time.sleep(0.05)
+        updatetime(now,1)
+    time.sleep(reactivity)
