@@ -1,3 +1,7 @@
+# Copyright Louis Dalibard 2021. All rights reserved.
+# Open7SClock (https://github.com/C8H10N4O2-E970/Open7SClock)
+# Version 10.15.2021
+
 from adafruit_ht16k33 import segments
 import datetime
 from time import localtime, timezone, time
@@ -13,13 +17,14 @@ import string
 import random
 
 # User variables
-version = "1.01"
+version = "10.15.2021"
 addresses = [0x72,0x71]
 ip = "192.168.1.59"
-mprisEnabled=True
-reactivity = 1 # def: 0.05
+mprisEnabled=False
+reactivity = 0.5 # def: 0.05
 # System Variables
 AlphanumList = string.ascii_lowercase + string.ascii_uppercase + string.digits
+charsBin = list(string.printable)[10:]
 # Initialise program.
 # Create the I2C interface.
 print("Starting I²C interface... ", end="")
@@ -64,9 +69,13 @@ def printodisplays(stringtoprint):
 # Define "update time" function.
 def updatetime(datetimeobject, seperation):
     if seperation:
-        datetimeobjectstr = datetimeobject.strftime(" %H  %M ") # ISO 8601 Standard
+        datetimeobjectstrhour = datetimeobject.strftime("%H")
+        datetimeobjectstrminute = datetimeobject.strftime("%M") # ISO 8601 Standard
+        datetimeobjectbinary = str(format(round(int(datetimeobject.strftime("%S"))/4),'#010b'))
     else:
         datetimeobjectstr = datetimeobject.strftime("  %H:%M ") # ISO 8601 Standard
+    currcharbin = charsBin[int(datetimeobjectstrminute)]
+    datetimeobjectstr = int(datetimeobjectbinary[6])*currcharbin+(1-int(datetimeobjectbinary[6]))*" "+datetimeobjectstrhour+int(datetimeobjectbinary[7])*currcharbin+(1-int(datetimeobjectbinary[7]))*" "+int(datetimeobjectbinary[8])*currcharbin+(1-int(datetimeobjectbinary[8]))*" "+datetimeobjectstrminute+int(datetimeobjectbinary[9])*currcharbin+(1-int(datetimeobjectbinary[9]))*" "
     printodisplays(datetimeobjectstr)
 # Define "ping" function.
 def ping():
